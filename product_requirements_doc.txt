@@ -1,0 +1,171 @@
+## **1. Overview**
+
+**Codename:** *litrev*
+
+**Platform:** iOS + iPadOS (Phase 1), macOS (Phase 2)
+
+**Type:** AI-assisted Literature Review & Research Notes App
+
+**Goal:** Help researchers and heavy readers manage and extract insights from text sources (papers, reports, books, whitepapers).
+
+**Core Value Proposition:** Turn reading into structured knowledge — automatically capture highlights, quotes, and references while reading, and organize them into well-formatted notes and bibliographies.
+
+## **2. Problem Statement**
+
+Researchers and analysts read large volumes of documents but lack efficient tools to:
+
+- Capture and organize insights while reading.
+- Automatically manage citations and bibliographies.
+- Retrieve quotes and notes across multiple documents and projects.
+
+Existing tools (e.g. Zotero, Mendeley, Readwise) handle parts of this flow but lack a **unified, intuitive iOS reading and annotation experience** that outputs structured, exportable knowledge artifacts.
+
+## **3. Objectives and Success Metrics**
+
+| Objective | Metric |
+| --- | --- |
+| Simplify research note-taking workflow | Time to extract and organize key ideas reduced by 50% |
+| Auto-generate structured “Notes & Sources” document | Export works seamlessly in APA format |
+| Provide intuitive reading/highlighting experience | 90% of users highlight or clip within first session |
+| Seamless import of major document formats | Support for PDF, EPUB, DOCX in v1 |
+
+## **4. Target Users**
+
+**Primary Users:**
+
+- Academic researchers
+- Graduate students
+- Analysts and consultants
+- Writers, journalists, and knowledge workers
+
+**User Goals:**
+
+- Read and annotate complex sources.
+- Automatically store references and quotes.
+- Generate structured notes for writing papers or reports.
+
+## **5. Core User Flow**
+
+1. **Create Project**
+    
+    → Name project (e.g. “AI Ethics Review”)
+    
+    → Folder created for sources, notes, and export files.
+    
+2. **Import Sources**
+    
+    → Add PDF, DOCX, EPUB, or URL.
+    
+    → App extracts metadata (author, title, year) → auto-generates APA reference.
+    
+    → Source appears in **Sources list**.
+    
+3. **Read & Annotate**
+    
+    → Open source in “Reader mode.”
+    
+    → User highlights text or selects images/figures.
+    
+    → Each highlight automatically:
+    
+    - Saves excerpt text/image.
+    - Tags with source, page, timestamp.
+    - Adds to “Notes & Excerpts.”
+4. **View Notes & Excerpts**
+    
+    → Organized by Source, Tag, or Theme.
+    
+    → Editable annotations and tags.
+    
+    → Option to generate summaries (Phase 2, AI feature).
+    
+5. **View Sources**
+    
+    → Automatically formatted in APA style.
+    
+    → Editable metadata.
+    
+6. **Export Project**
+    
+    → Single file (.PDF or .DOCX) containing:
+    
+    - Project name
+    - List of all quotes/excerpts grouped by source
+    - Bibliography (APA formatted)
+
+## **6. Core Features (MVP Scope)**
+
+| Feature | Description | Priority |
+| --- | --- | --- |
+| Document import (PDF, DOCX, EPUB) | Read and parse text | Must |
+| APA citation generation | Extract metadata via DOI or parsing | Must |
+| Highlight text | Capture and store excerpts | Must |
+| Clip image/graph | Capture image area to Notes | Should |
+| Notes & Excerpts section | Auto-populate highlights | Must |
+| Sources list | Auto-formatted APA entries | Must |
+| Project export (.docx/.pdf) | Structured export of notes + sources | Must |
+| Local storage (on-device CoreData) | Offline first design | Must |
+| AI metadata enrichment | Suggest missing citation info | Should |
+| Search within documents | Keyword search | Should |
+| Sync via iCloud | Optional Phase 2 | Could |
+
+## **7. Technical Requirements**
+
+**Frontend:** SwiftUI (iOS/iPadOS)
+
+**Backend (local):** Core Data or SQLite for storage
+
+**File handling:** PDFKit, UIDocumentPickerViewController
+
+**Text extraction:** PDFKit, Vision framework for OCR on images
+
+**Citation generation:** DOI resolver via CrossRef API or heuristic metadata parser
+
+**Export engine:** DocC/RTF generator for .docx + PDFKit for .pdf export
+
+**Optional AI integration:**
+
+- Summarization of excerpts
+- Automatic keyword tagging
+
+## **8. Future Features (Phase 2)**
+
+- AI Summarizer (“Generate synthesis of all notes”).
+- Topic-based knowledge graphs (“connect ideas across sources”).
+- Cloud sync and web dashboard.
+- Collaboration: shared projects and annotations.
+- Integration with Zotero, Notion, or Obsidian.
+
+## **9. Constraints & Assumptions**
+
+- iOS/iPadOS app built in SwiftUI for modern UI and multitouch annotation.
+- Offline first (no mandatory sign-in for MVP).
+- Privacy-focused: all data stored locally unless sync enabled.
+- Export compatible with standard editors (Word, Google Docs).
+
+## **10. Risks & Mitigations**
+
+| Risk | Mitigation |
+| --- | --- |
+| Complex file parsing for different formats | Start with PDF-only MVP |
+| OCR accuracy for scanned papers | Use Vision framework or external OCR API |
+| APA formatting complexity | Implement modular citation engine for flexibility |
+| App Store approval (metadata scraping) | Allow manual entry and disclaimers |
+
+## **11. Deliverables (for AI Dev Agent)**
+
+**MVP Feature Set to Implement:**
+
+1. Project creation and management UI.
+2. Document import (PDF only, v1).
+3. Reader with highlight and excerpt capture.
+4. “Notes & Excerpts” tab auto-populated from highlights.
+5. “Sources” tab with auto APA generation (author, year, title, journal).
+6. Export Project → .docx/.pdf file with quotes + bibliography.
+
+## **12. Design Style**
+
+- Clean, minimal, scholar aesthetic (like Notion + Apple Books).
+- Dark/light mode.
+- Serif fonts for reading; sans-serif for UI.
+- Two-pane layout on iPad: left sidebar (Projects, Sources, Notes), main reader on right.

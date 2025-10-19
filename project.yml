@@ -1,0 +1,59 @@
+name: LitRev
+options:
+  bundleIdPrefix: com.litrev
+  deploymentTarget:
+    iOS: "16.0"
+  developmentLanguage: en
+  xcodeVersion: "15.0"
+  
+targets:
+  LitRev:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - LitRev
+    resources:
+      - LitRev/SampleData
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.litrev.app
+        INFOPLIST_FILE: LitRev/Info.plist
+        TARGETED_DEVICE_FAMILY: "2"
+        SUPPORTS_MACCATALYST: false
+        IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+        SWIFT_VERSION: "5.9"
+        CODE_SIGN_STYLE: Automatic
+    info:
+      path: LitRev/Info.plist
+      properties:
+        LSRequiresIPhoneOS: true
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UIRequiresFullScreen: false
+        UIStatusBarStyle: UIStatusBarStyleDefault
+        UIUserInterfaceStyle: Automatic
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+        CFBundleDisplayName: LitRev
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+        UTImportedTypeDeclarations:
+          - UTTypeIdentifier: public.pdf
+            UTTypeDescription: PDF Document
+            UTTypeConformsTo:
+              - public.data
+              - public.composite-content
+            UTTypeTagSpecification:
+              public.filename-extension:
+                - pdf
+

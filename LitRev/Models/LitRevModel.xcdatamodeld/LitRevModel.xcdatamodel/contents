@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastModified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="notesData" optional="YES" attributeType="Binary"/>
+        <attribute name="researchQuestion" optional="YES" attributeType="String"/>
+        <relationship name="excerpts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Excerpt" inverseName="project" inverseEntity="Excerpt"/>
+        <relationship name="sources" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="project" inverseEntity="Source"/>
+    </entity>
+    <entity name="Source" representedClassName="Source" syncable="YES">
+        <attribute name="apaReference" optional="YES" attributeType="String"/>
+        <attribute name="authors" optional="YES" attributeType="String"/>
+        <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="doi" optional="YES" attributeType="String"/>
+        <attribute name="fileName" optional="YES" attributeType="String"/>
+        <attribute name="filePath" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="journal" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="year" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="excerpts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Excerpt" inverseName="source" inverseEntity="Excerpt"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="sources" inverseEntity="Project"/>
+    </entity>
+    <entity name="Excerpt" representedClassName="Excerpt" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="pageNumber" optional="YES" attributeType="String"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="excerpts" inverseEntity="Project"/>
+        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Source" inverseName="excerpts" inverseEntity="Source"/>
+    </entity>
+</model>
+
